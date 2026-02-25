@@ -33585,7 +33585,7 @@ new Context();
 function run(){
   // 1) get some input values
   const bucket_name = getInput('bucket', { required: true});
-  const bucket_region =  getInput('region', { required: false});
+  const bucket_region =  getInput('bucket-region', { required: false});
   const dist_folder = getInput('dist-folder', { required: true});
 
   const s3Uri = `s3://${bucket_name}`;
@@ -33594,6 +33594,9 @@ function run(){
   exec(`aws s3 sync ${dist_folder} ${s3Uri} --region ${bucket_region}`);
 
   notice("Hello form the js custom job");
+  notice(`bucket region: ${bucket_region}`);
+  notice(`bucket name: ${bucket_name}`);
+  notice(`bucket dist folder: ${dist_folder}`);
 }
 
 run();

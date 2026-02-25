@@ -6,7 +6,7 @@ import * as exec from "@actions/exec"
 function run(){
   // 1) get some input values
   const bucket_name = core.getInput('bucket', { required: true})
-  const bucket_region =  core.getInput('region', { required: false})
+  const bucket_region =  core.getInput('bucket-region', { required: false})
   const dist_folder = core.getInput('dist-folder', { required: true})
 
   const s3Uri = `s3://${bucket_name}`
@@ -15,6 +15,9 @@ function run(){
   exec.exec(`aws s3 sync ${dist_folder} ${s3Uri} --region ${bucket_region}`)
 
   core.notice("Hello form the js custom job")
+  core.notice(`bucket region: ${bucket_region}`)
+  core.notice(`bucket name: ${bucket_name}`)
+  core.notice(`bucket dist folder: ${dist_folder}`)
 }
 
 run();
