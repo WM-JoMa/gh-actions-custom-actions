@@ -5,6 +5,10 @@ inputs:
     description: Flag to indicate that always install dependencies from scrath
     required: false
     default: false
+outputs:
+  used-cache:
+    description: Whether the cache was used
+    value: ${{ steps.install.outputs.cache-was-used }}
 runs:
   using: composite
   steps:
@@ -16,6 +20,13 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: install
       if: inputs.always_install == 'true' || steps.cache.outputs.cache-hit != 'true'
-      run: npm ci
       shell: bash
+      run: |
+        npm ci
+        echo "cache-was-used='false' >> $GITHUB_OUTPUT"
+    - name: ouput-default
+      shell: bash
+      if: inputs.always_install == 'false'
+      run: echo "cache-was-used='true' >> $GITHUB_OUTPUT"
