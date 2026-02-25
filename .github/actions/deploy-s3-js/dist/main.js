@@ -1,6 +1,5 @@
 import require$$0 from '@actions/core';
 import '@actions/github';
-import '@actions/exec';
 
 function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -14,6 +13,7 @@ function requireMain () {
 	if (hasRequiredMain) return main$1;
 	hasRequiredMain = 1;
 	const core = require$$0;
+	// const exect = require('@actions/exec')
 
 	function run(){
 	  core.notice("Hello form the js custom job");
