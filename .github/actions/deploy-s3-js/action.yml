@@ -2,5 +2,5 @@ name: Deploy to S3
 description: Deploy static web site to s3 bucket
 runs:
   using: 'node24'
-  main: 'main.js'
+  main: 'dist/main.js'
   
