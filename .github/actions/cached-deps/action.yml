@@ -26,7 +26,3 @@ runs:
       run: |
         npm ci
         echo "cache-was-used='false' >> $GITHUB_OUTPUT"
-    - name: ouput-default
-      shell: bash
-      if: inputs.always_install == 'false'
-      run: echo "cache-was-used='true' >> $GITHUB_OUTPUT"
