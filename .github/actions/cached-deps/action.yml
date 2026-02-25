@@ -8,7 +8,7 @@ inputs:
 outputs:
   used-cache:
     description: Whether the cache was used
-    value: ${{ steps.install.outputs.cache-was-used }}
+    value: ${{ steps.install.outputs.result }}
 runs:
   using: composite
   steps:
@@ -25,4 +25,4 @@ runs:
       shell: bash
       run: |
         npm ci
-        echo "cache-was-used='false' >> $GITHUB_OUTPUT"
+        echo "result='false' >> $GITHUB_OUTPUT"
