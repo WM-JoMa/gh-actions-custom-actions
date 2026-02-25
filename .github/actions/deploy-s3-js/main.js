@@ -14,6 +14,9 @@ function run(){
   // 2) upload files
   exec.exec(`aws s3 sync ${dist_folder} ${s3Uri} --region ${bucket_region}`)
 
+  const pageURL = `http://${bucket_name}.s3.${bucket_region}.amazonaws.com/index.html`
+  core.setOutput('website-url', pageURL )
+
   core.notice("Hello form the js custom job")
   core.notice(`bucket region: ${bucket_region}`)
   core.notice(`bucket name: ${bucket_name}`)

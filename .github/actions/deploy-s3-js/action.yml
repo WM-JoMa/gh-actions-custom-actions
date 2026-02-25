@@ -11,6 +11,9 @@ inputs:
   dist-folder:
     description: the folder containing deployable files
     required: true
+outputs:
+  website-url:
+    description: URL of the web page
 runs:
   using: 'node24'
   main: './dist/main.js'
