@@ -25,4 +25,4 @@ runs:
       shell: bash
       run: |
         npm ci
-        echo "result='false' >> $GITHUB_OUTPUT"
+        echo "result='false'" >> $GITHUB_OUTPUT
